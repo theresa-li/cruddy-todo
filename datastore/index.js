@@ -16,14 +16,13 @@ exports.create = (text, callback) => {
 };
 
 exports.readAll = (callback) => {
-  var dataArr = fs.readFile(exports.dataDir, (err, fileData) => {
-    callback(null, fileData);
-  })
-  var data = _.map(dataArr, (text, id) => {
-    return { id, text };
-  });
-  // callback(null, data);
+  fs.readdir(exports.dataDir, (err, items) => {
+    callback(null, _.map(items, (id, text) => {
+      return { id: path.basename(id, '.txt'), text: path.basename(id, '.txt') };
+    }));
+  }); 
 };
+
 
 exports.readOne = (id, callback) => {
   var text = items[id];
