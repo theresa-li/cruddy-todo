@@ -5,6 +5,7 @@ window.Todo = {
 
   url: '/todo',
 
+
   // Create (Crud) -- collection
   create: function(text, callback) {
     return $.ajax({
